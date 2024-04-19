@@ -161,6 +161,33 @@ namespace School.Controllers
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
+        public IActionResult Search(int? courseId)
+        {
+            // Hämta kursdata för dropdown-menyn från din databas
+            var courses = _context.Courses.ToList();
+            SelectList courseList = new SelectList(courses, "CourseId", "CourseName");
+
+            // Lägg till SelectList i ViewData med nyckeln 'CourseId'
+            ViewData["CourseId"] = courseList;
+
+            // Kontrollera om courseId har angetts och om det finns en matchande kurs
+            if (courseId.HasValue && _context.Courses.Any(c => c.CourseId == courseId))
+            {
+                // Hämta lärare för den valda kursen med LINQ
+                var teachersInCourse = _context.TeacherCourses
+                                            .Where(tc => tc.FkCourseId == courseId)
+                                            .Select(tc => tc.Teacher)
+                                            .ToList();
+
+                // Skicka resultatet till vyn
+                return View(teachersInCourse);
+            }
+            else
+            {
+                // Om courseId inte har angetts eller om den inte matchar någon kurs, visa söksidan med dropdown-menyn
+                return View();
+            }
+        }
 
         private bool TeacherCourseExists(int id)
         {

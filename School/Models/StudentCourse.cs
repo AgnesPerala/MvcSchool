@@ -9,21 +9,22 @@ namespace School.Models
         A, B, C, D, E, F
     }
 
-    public class Enrollment
+    public class StudentCourse
     {
         [Key]
-        public int EnrollmentId { get; set; }
+        public int StudentCourseId { get; set; }
 
         [EnumDataType(typeof(Grade))]
         public Grade? Grade { get; set; }
 
+        [Required]
         [ForeignKey("Course")]
-        public int CourseId { get; set; }
-        public virtual Course? Courses { get; set; }
+        public int FkCourseId { get; set; }
+        public Course? Course { get; set; }
 
+        [Required]
         [ForeignKey("Student")]
         public int FkStudentId { get; set; }
-
-        public virtual Student? Student { get; set; }
+        public Student? Student { get; set; }
     }
 }

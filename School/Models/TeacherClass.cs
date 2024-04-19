@@ -3,19 +3,19 @@ using System.ComponentModel.DataAnnotations;
 
 namespace School.Models
 {
-    public class StudentClass
+    public class TeacherClass
     {
         [Key]
-        public int StudentClassId { get; set; }
-
-        [Required]
-        [ForeignKey("Student")]
-        public int FkStudentId { get; set; }
-        public Student? Student { get; set; }
+        public int TeacherClassId { get; set; }
 
         [Required]
         [ForeignKey("Class")]
         public int FkClassId { get; set; }
         public Class? Class { get; set; }
+
+        [Required]
+        [ForeignKey("Teacher")]
+        public int FkTeacherId { get; set; }
+        public Teacher? Teacher { get; set; }
     }
 }

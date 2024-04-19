@@ -8,8 +8,9 @@ namespace School.Models
         [Key]
         public int TeacherId { get; set; }
 
-        public string TeacherName { get; set; }
+        public required string TeacherName { get; set; }
 
-        public virtual ICollection<Course> Courses { get; set; }
+        public ICollection<TeacherCourse>? Courses { get; set; }
+        public ICollection<TeacherClass>? MentorClasses { get; set; }
     }
 }

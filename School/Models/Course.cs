@@ -8,12 +8,9 @@ namespace School.Models
         [Key]
         public int CourseId { get; set; }
 
-        public string CourseName { get; set; }
-
-        [ForeignKey("Teacher")]
-        public int TeacherId { get; set; }
-        public Teacher? Teacher { get; set; }
-        public virtual ICollection<Enrollment>? Enrollments { get; set; }
+        public required string CourseName { get; set; }
+        public TeacherCourse? Teacher { get; set; }
+        public ICollection<StudentCourse>? Enrollments { get; set; }
 
     }
 }

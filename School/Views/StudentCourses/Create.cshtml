@@ -1,4 +1,4 @@
-﻿@model School.Models.Enrollment
+﻿@model School.Models.StudentCourse
 
 @{
     ViewData["Title"] = "Create";
@@ -6,7 +6,7 @@
 
 <h1>Create</h1>
 
-<h4>Enrollment</h4>
+<h4>StudentCourse</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -14,18 +14,12 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Grade" class="control-label"></label>
-                <select asp-for="Grade" class="form-control">
-                    <option value="">Select Grade</option>
-                    @foreach (var grade in Enum.GetValues(typeof(Grade)))
-                    {
-                        <option value="@grade">@grade</option>
-                    }
-                </select>
+                <input asp-for="Grade" class="form-control" />
                 <span asp-validation-for="Grade" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CourseId" class="control-label"></label>
-                <select asp-for="CourseId" class ="form-control" asp-items="ViewBag.CourseId"></select>
+                <label asp-for="FkCourseId" class="control-label"></label>
+                <select asp-for="FkCourseId" class ="form-control" asp-items="ViewBag.FkCourseId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="FkStudentId" class="control-label"></label>

@@ -14,8 +14,11 @@ namespace School.Data
         public DbSet<Student> Students { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
         public DbSet<Course> Courses { get; set; }
+        public DbSet<Class> Classes { get; set; }
         public DbSet<StudentClass> StudentClasses { get; set; }
-        public DbSet<Enrollment> Enrollments { get; set; }
+        public DbSet<TeacherClass> TeacherClasses { get; set; }
+        public DbSet<StudentCourse> StudentCourses { get; set; }
+        public DbSet<TeacherCourse> TeacherCourses { get; set; }
     }
 
 }

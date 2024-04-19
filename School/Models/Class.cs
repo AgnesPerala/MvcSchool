@@ -9,7 +9,7 @@ namespace School.Models
 
         public required string ClassName { get; set; }
 
-        public ICollection<StudentClass>? Students { get; set; }
-        public TeacherClass? Mentor { get; set; }
+        public ICollection<StudentClass>? StudentClasses { get; set; }
+        public TeacherClass? TeacherClass { get; set; }
     }
 }

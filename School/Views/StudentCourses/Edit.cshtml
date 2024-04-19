@@ -15,7 +15,13 @@
             <input type="hidden" asp-for="StudentCourseId" />
             <div class="form-group">
                 <label asp-for="Grade" class="control-label"></label>
-                <input asp-for="Grade" class="form-control" />
+                <select asp-for="Grade" class="form-control">
+                    <option value="">Select Grade</option>
+                    @foreach (var grade in Enum.GetValues(typeof(Grade)))
+                    {
+                        <option value="@grade">@grade</option>
+                    }
+                </select>
                 <span asp-validation-for="Grade" class="text-danger"></span>
             </div>
             <div class="form-group">

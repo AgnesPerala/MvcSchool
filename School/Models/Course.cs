@@ -9,8 +9,8 @@ namespace School.Models
         public int CourseId { get; set; }
 
         public required string CourseName { get; set; }
-        public TeacherCourse? Teacher { get; set; }
-        public ICollection<StudentCourse>? Enrollments { get; set; }
+        public ICollection<TeacherCourse>? TeacherCourses { get; set; }
+        public ICollection<StudentCourse>? StudentCourses { get; set; }
 
     }
 }

@@ -387,8 +387,7 @@ namespace School.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_TeacherCourses_FkCourseId",
                 table: "TeacherCourses",
-                column: "FkCourseId",
-                unique: true);
+                column: "FkCourseId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TeacherCourses_FkTeacherId",

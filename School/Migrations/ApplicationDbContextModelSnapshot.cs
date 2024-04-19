@@ -378,8 +378,7 @@ namespace School.Migrations
 
                     b.HasKey("TeacherCourseId");
 
-                    b.HasIndex("FkCourseId")
-                        .IsUnique();
+                    b.HasIndex("FkCourseId");
 
                     b.HasIndex("FkTeacherId");
 
@@ -440,13 +439,13 @@ namespace School.Migrations
             modelBuilder.Entity("School.Models.StudentClass", b =>
                 {
                     b.HasOne("School.Models.Class", "Class")
-                        .WithMany("Students")
+                        .WithMany("StudentClasses")
                         .HasForeignKey("FkClassId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("School.Models.Student", "Student")
-                        .WithOne("Class")
+                        .WithOne("StudentClass")
                         .HasForeignKey("School.Models.StudentClass", "FkStudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -459,13 +458,13 @@ namespace School.Migrations
             modelBuilder.Entity("School.Models.StudentCourse", b =>
                 {
                     b.HasOne("School.Models.Course", "Course")
-                        .WithMany("Enrollments")
+                        .WithMany("StudentCourses")
                         .HasForeignKey("FkCourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("School.Models.Student", "Student")
-                        .WithMany("Enrollments")
+                        .WithMany("StudentCourses")
                         .HasForeignKey("FkStudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -478,13 +477,13 @@ namespace School.Migrations
             modelBuilder.Entity("School.Models.TeacherClass", b =>
                 {
                     b.HasOne("School.Models.Class", "Class")
-                        .WithOne("Mentor")
+                        .WithOne("TeacherClass")
                         .HasForeignKey("School.Models.TeacherClass", "FkClassId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("School.Models.Teacher", "Teacher")
-                        .WithMany("MentorClasses")
+                        .WithMany("TeacherClasses")
                         .HasForeignKey("FkTeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -497,13 +496,13 @@ namespace School.Migrations
             modelBuilder.Entity("School.Models.TeacherCourse", b =>
                 {
                     b.HasOne("School.Models.Course", "Course")
-                        .WithOne("Teacher")
-                        .HasForeignKey("School.Models.TeacherCourse", "FkCourseId")
+                        .WithMany("TeacherCourses")
+                        .HasForeignKey("FkCourseId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("School.Models.Teacher", "Teacher")
-                        .WithMany("Courses")
+                        .WithMany("TeacherCourses")
                         .HasForeignKey("FkTeacherId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -515,30 +514,30 @@ namespace School.Migrations
 
             modelBuilder.Entity("School.Models.Class", b =>
                 {
-                    b.Navigation("Mentor");
+                    b.Navigation("StudentClasses");
 
-                    b.Navigation("Students");
+                    b.Navigation("TeacherClass");
                 });
 
             modelBuilder.Entity("School.Models.Course", b =>
                 {
-                    b.Navigation("Enrollments");
+                    b.Navigation("StudentCourses");
 
-                    b.Navigation("Teacher");
+                    b.Navigation("TeacherCourses");
                 });
 
             modelBuilder.Entity("School.Models.Student", b =>
                 {
-                    b.Navigation("Class");
+                    b.Navigation("StudentClass");
 
-                    b.Navigation("Enrollments");
+                    b.Navigation("StudentCourses");
                 });
 
             modelBuilder.Entity("School.Models.Teacher", b =>
                 {
-                    b.Navigation("Courses");
+                    b.Navigation("TeacherClasses");
 
-                    b.Navigation("MentorClasses");
+                    b.Navigation("TeacherCourses");
                 });
 #pragma warning restore 612, 618
         }

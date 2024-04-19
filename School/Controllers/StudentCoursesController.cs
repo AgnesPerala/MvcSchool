@@ -122,7 +122,7 @@ namespace School.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["FkCourseId"] = new SelectList(_context.Courses, "CourseId", "CourseName", studentCourse.FkCourseId);
+            ViewData["FkCourseId"] = new SelectList(_context.Courses, "CourseId", "CourseNamed", studentCourse.FkCourseId);
             ViewData["FkStudentId"] = new SelectList(_context.Students, "StudentId", "StudentName", studentCourse.FkStudentId);
             return View(studentCourse);
         }
